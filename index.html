@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Crewmate or Imposter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+    button {
+      padding: 10px 20px;
+      margin-top: 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background: #4caf50;
+      color: white;
+    }
+    .result {
+      margin-top: 30px;
+      font-size: 22px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Among Us Word Game</h1>
+  <p>Click the button to see if you’re a Crewmate or an Imposter.</p>
+  <button onclick="assignRole()">Reveal Role</button>
+  <div class="result" id="result"></div>
+
+  <script>
+    const words = ["Pizza", "Spaceship", "Ocean", "Tiger", "Laptop", "Banana"];
+    let chosenWord = words[Math.floor(Math.random() * words.length)];
+    
+    function assignRole() {
+      // 1 in 4 chance to be Imposter
+      let isImposter = Math.random() < 0.25;
+      let resultDiv = document.getElementById("result");
+      
+      if (isImposter) {
+        resultDiv.textContent = "🚨 You are the Imposter! (No word for you)";
+        resultDiv.style.color = "red";
+      } else {
+        resultDiv.textContent = "✅ You are a Crewmate! Your word is: " + chosenWord;
+        resultDiv.style.color = "lightgreen";
+      }
+    }
+  </script>
+</body>
+</html>
